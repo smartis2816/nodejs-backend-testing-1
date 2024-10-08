@@ -25,6 +25,10 @@ describe('PostsService', () => {
     // реализуйте тест-кейс
     const currentPost = postsService.create(post);
     const foundPost = postsService.find(currentPost.id);
-    expect(foundPost).toEqual(post);
+    expect(foundPost).toMatchObject({
+      id: currentPost.id,
+      text: post.text,
+      date: expect.any(String),
+    });
   });
 });
